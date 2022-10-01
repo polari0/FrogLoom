@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterIdleState : CharacterBaseState
+namespace FrogLoom
 {
-    public override void EnterState()
+    internal class CharacterIdleState : CharacterBaseState
     {
-        
+        internal override void EnterState()
+        {
+
+        }
+        internal override void UpdateState()
+        {
+
+        }
+        internal override void ExitState()
+        {
+
+        }
+        internal override void CheckSwitchStates()
+        {
+
+        }
+        internal override void InitializeSubState()
+        {
+
+        }
     }
-    public override void UpdateState()
-    {
-        
-    }
-    public override void ExitState()
-    {
-        
-    }
-    public override void CheckSwitchStates()
-    {
-        
-    }
-    public override void InitializeSubState()
-    {
-        
-    }
+
 }

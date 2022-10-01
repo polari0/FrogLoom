@@ -1,29 +1,32 @@
 using UnityEngine;
 
-public abstract class CharacterBaseState
+namespace FrogLoom
 {
-    public abstract void EnterState();
-    public abstract void UpdateState();
-    public abstract void ExitState();
-    public abstract void CheckSwitchStates();
-    public abstract void InitializeSubState();
-
-
-    void UpdateStates()
+    public abstract class CharacterBaseState
     {
+        internal abstract void EnterState();
+        internal abstract void UpdateState();
+        internal abstract void ExitState();
+        internal abstract void CheckSwitchStates();
+        internal abstract void InitializeSubState();
 
-    }
-    void SwitchStates()
-    {
 
-    }
-    void SetSuperState()
-    {
+        void UpdateStates()
+        {
 
-    }
-    void SetSubState()
-    {
+        }
+        void SwitchStates()
+        {
 
-    }
+        }
+        void SetSuperState()
+        {
 
+        }
+        void SetSubState()
+        {
+
+        }
+
+    } 
 }

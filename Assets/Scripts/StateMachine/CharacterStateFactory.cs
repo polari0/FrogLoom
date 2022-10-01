@@ -1,30 +1,33 @@
-public class CharacterStateFactory
+namespace FrogLoom
 {
-    CharacterStateMachine _context;
+    internal class CharacterStateFactory
+    {
+        CharacterStateMachine _context;
 
-    public CharacterStateFactory(CharacterStateMachine currentContext)
-    {
-        _context = currentContext;
-    }
+        internal CharacterStateFactory(CharacterStateMachine currentContext)
+        {
+            _context = currentContext;
+        }
 
-    public CharacterBaseState Idle()
-    {
-        return new CharacterIdleState();
-    }
-    public CharacterBaseState Walk()
-    {
-        return new ChacterWalkState();
-    }
-    public CharacterBaseState Run()
-    {
-        return new CharacterRunState();
-    }
-    public CharacterBaseState Jump()
-    {
-        return new CharacterJumpState();
-    }
-    public CharacterBaseState Grounded()
-    {
-        return new ChacterGroundedState();
-    }
+        internal CharacterBaseState Idle()
+        {
+            return new CharacterIdleState();
+        }
+        internal CharacterBaseState Walk()
+        {
+            return new ChacterWalkState();
+        }
+        internal CharacterBaseState Run()
+        {
+            return new CharacterRunState();
+        }
+        internal CharacterBaseState Jump()
+        {
+            return new CharacterJumpState();
+        }
+        internal CharacterBaseState Grounded()
+        {
+            return new ChacterGroundedState();
+        }
+    } 
 }

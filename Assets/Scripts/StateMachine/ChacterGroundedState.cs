@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChacterGroundedState : CharacterBaseState
+namespace FrogLoom
 {
-    public override void EnterState()
+    internal class ChacterGroundedState : CharacterBaseState
     {
+        internal override void EnterState()
+        {
 
-    }
-    public override void UpdateState()
-    {
+        }
+        internal override void UpdateState()
+        {
 
-    }
-    public override void ExitState()
-    {
+        }
+        internal override void ExitState()
+        {
 
-    }
-    public override void CheckSwitchStates()
-    {
+        }
+        internal override void CheckSwitchStates()
+        {
 
-    }
-    public override void InitializeSubState()
-    {
+        }
+        internal override void InitializeSubState()
+        {
 
-    }
+        }
+    } 
 }

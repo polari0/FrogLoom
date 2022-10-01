@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChacterWalkState : CharacterBaseState
-{ 
-    public override void EnterState()
+namespace FrogLoom
+{
+    internal class ChacterWalkState : CharacterBaseState
     {
+        internal override void EnterState()
+        {
 
-    }
-    public override void UpdateState()
-    {
+        }
+        internal override void UpdateState()
+        {
 
-    }
-    public override void ExitState()
-    {
+        }
+        internal override void ExitState()
+        {
 
-    }
-    public override void CheckSwitchStates()
-    {
+        }
+        internal override void CheckSwitchStates()
+        {
 
-    }
-    public override void InitializeSubState()
-    {
+        }
+        internal override void InitializeSubState()
+        {
 
-    }
+        }
+    } 
 }

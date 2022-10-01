@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class CharacterStateMachine : MonoBehaviour
+namespace FrogLoom
 {
-
-    CharacterStateFactory _states;
-    private void Awake()
+    internal class CharacterStateMachine : MonoBehaviour
     {
-        _states = new CharacterStateFactory(this);
-    }
+
+        CharacterStateFactory _states;
+        private void Awake()
+        {
+            _states = new CharacterStateFactory(this);
+        }
+    } 
 }
