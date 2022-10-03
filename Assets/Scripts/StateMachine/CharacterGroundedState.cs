@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace FrogLoom
 {
-    internal class ChacterWalkState : CharacterBaseState
+    internal class CharacterGroundedState : CharacterBaseState
     {
+        public CharacterGroundedState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory) { }
         internal override void EnterState()
         {
-
+            Debug.Log("IT works");
         }
         internal override void UpdateState()
         {

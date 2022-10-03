@@ -11,23 +11,23 @@ namespace FrogLoom
 
         internal CharacterBaseState Idle()
         {
-            return new CharacterIdleState();
+            return new CharacterIdleState(_context, this);
         }
         internal CharacterBaseState Walk()
         {
-            return new ChacterWalkState();
+            return new CharacterWalkState(_context, this);
         }
         internal CharacterBaseState Run()
         {
-            return new CharacterRunState();
+            return new CharacterRunState(_context, this);
         }
         internal CharacterBaseState Jump()
         {
-            return new CharacterJumpState();
+            return new CharacterJumpState(_context, this);
         }
         internal CharacterBaseState Grounded()
         {
-            return new ChacterGroundedState();
+            return new CharacterGroundedState(_context, this);
         }
     } 
 }

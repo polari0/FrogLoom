@@ -6,13 +6,14 @@ namespace FrogLoom
 {
     internal class CharacterRunState : CharacterBaseState
     {
+        internal CharacterRunState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory) { }
         internal override void EnterState()
         {
 
         }
         internal override void UpdateState()
         {
-
+            CheckSwitchStates();
         }
         internal override void ExitState()
         {

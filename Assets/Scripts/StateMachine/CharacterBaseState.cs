@@ -2,8 +2,19 @@ using UnityEngine;
 
 namespace FrogLoom
 {
-    public abstract class CharacterBaseState
+    internal abstract class CharacterBaseState
     {
+        protected CharacterStateMachine _ctx;
+        protected CharacterStateFactory _factory;
+        protected CharacterBaseState _currentSubState;
+        protected CharacterBaseState _currentSuperState;
+        internal CharacterBaseState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory)
+        {
+            _ctx = currentContext;
+            _factory = characterStateFactory;
+        }
+
+
         internal abstract void EnterState();
         internal abstract void UpdateState();
         internal abstract void ExitState();
@@ -15,17 +26,25 @@ namespace FrogLoom
         {
 
         }
-        void SwitchStates()
+        protected void SwitchStates(CharacterBaseState newState)
         {
+            //Exit current State
+            ExitState();
 
+            //Enter new state
+            newState.EnterState();
+
+            //Switch Current state of context
+            _ctx.CurrentState = newState;
         }
-        void SetSuperState()
+        protected void SetSuperState(CharacterBaseState newSuperState)
         {
-
+            _currentSuperState = newSuperState;
         }
-        void SetSubState()
+        protected void SetSubState(CharacterBaseState newSubState)
         {
-
+            _currentSubState = newSubState;
+            newSubState.SetSuperState(this);
         }
 
     } 

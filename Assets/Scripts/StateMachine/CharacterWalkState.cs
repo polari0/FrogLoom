@@ -4,15 +4,16 @@ using UnityEngine;
 
 namespace FrogLoom
 {
-    internal class ChacterGroundedState : CharacterBaseState
+    internal class CharacterWalkState : CharacterBaseState
     {
+        internal CharacterWalkState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base (currentContext, characterStateFactory){ }
         internal override void EnterState()
         {
 
         }
         internal override void UpdateState()
         {
-
+            CheckSwitchStates();
         }
         internal override void ExitState()
         {
