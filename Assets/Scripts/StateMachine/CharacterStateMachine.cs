@@ -17,11 +17,12 @@ namespace FrogLoom
         private bool _isRunPressed;
         private float _zero = 0f;
         private Vector2 _appliedMovement;
-        Transform _transform;
+        private Transform _transform;
+        private bool _requireNewJumpPress = false;
 
         [SerializeField] private float _jumpForce = 1f;
         [SerializeField] private float _movespeed = 1f;
-        private bool _grounded;
+        private bool _grounded = false;
         private CapsuleCollider2D _capsuleCollider2D;
         private Rigidbody2D _rigidBody;
         [SerializeField] private LayerMask _platformLayerMask;
@@ -38,6 +39,7 @@ namespace FrogLoom
         public Vector2 CurrentMovementInput { get { return _currentMovementInput; } } 
         public Transform PlayerTransform { get { return _transform; } set { _transform = value; } }
         public float JumpForce { get { return _jumpForce; } }
+        public bool RequireNewJumpPress { get { return _requireNewJumpPress; } set { _requireNewJumpPress = value; } }
 
         private void CheckGrounded ()
         {
@@ -88,13 +90,12 @@ namespace FrogLoom
             _playerInput.Player.Run.canceled += OnRun;
             _playerInput.Player.Jump.started += OnJump;
             _playerInput.Player.Jump.canceled += OnJump;
-
         }
         private void Update()
         {
             CheckGrounded();
-            _currentState.UpdateState();
-            _rigidBody.velocity = new Vector2(_appliedMovement.x, _rigidBody.velocity.y);
+            _currentState.UpdateStates();
+            _rigidBody.velocity = new Vector2(_currentMovementInput.x, _rigidBody.velocity.y);
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -107,6 +108,7 @@ namespace FrogLoom
         public void OnJump(InputAction.CallbackContext context)
         {
             _isJumpPressed = context.ReadValueAsButton();
+            _requireNewJumpPress = false;
             Debug.Log("Jump Pressed");
         }
 
@@ -114,6 +116,18 @@ namespace FrogLoom
         {
             _isRunPressed = context.ReadValueAsButton();
             Debug.Log("Run Pressed");
+        }
+
+        void OnEnable()
+        {
+            // enable the character controls action map
+            _playerInput.Player.Enable();
+        }
+
+        void OnDisable()
+        {
+            // disable the character controls action map
+            _playerInput.Player.Disable();
         }
     } 
 }

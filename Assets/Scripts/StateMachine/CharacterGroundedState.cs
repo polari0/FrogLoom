@@ -22,7 +22,7 @@ namespace FrogLoom
         }
         internal override void CheckSwitchStates()
         {
-            if (Ctx.IsJumpPressed)
+            if (Ctx.IsJumpPressed && !Ctx.RequireNewJumpPress && Ctx.IsGrounded)
             {
                 SwitchStates(Factory.Jump());
             }

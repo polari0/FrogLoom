@@ -18,10 +18,11 @@ namespace FrogLoom
         }
         internal override void ExitState()
         {
-
+            Ctx.RequireNewJumpPress = true;
         }
         internal override void CheckSwitchStates()
         {
+            Debug.Log(Ctx.IsGrounded);
             if (Ctx.IsGrounded)
             {
                 SwitchStates(Factory.Grounded());
@@ -33,7 +34,7 @@ namespace FrogLoom
         }
 
         void Jump() {
-            Ctx.PlayerRigidBody.AddForce(Ctx.PlayerTransform.up * Ctx.JumpForce, ForceMode2D.Impulse);
+            Ctx.PlayerRigidBody.velocity = Vector2.up * Ctx.JumpForce;
         }
     }
 
