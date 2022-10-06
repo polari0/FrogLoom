@@ -9,11 +9,12 @@ namespace FrogLoom
         public CharacterGroundedState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory) { }
         internal override void EnterState()
         {
-            Debug.Log("IT works");
+            Debug.Log("Enter Grounded State"); 
         }
         internal override void UpdateState()
         {
-
+            //Debug.Log("Update is called");
+            CheckSwitchStates();
         }
         internal override void ExitState()
         {
@@ -21,7 +22,11 @@ namespace FrogLoom
         }
         internal override void CheckSwitchStates()
         {
-
+            Debug.Log(Ctx.IsJumpPressed);
+            if (Ctx.IsJumpPressed)
+            {
+                SwitchStates(Factory.Jump());
+            }
         }
         internal override void InitializeSubState()
         {

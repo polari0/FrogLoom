@@ -9,7 +9,8 @@ namespace FrogLoom
         internal CharacterJumpState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory) { }
         internal override void EnterState()
         {
-
+            Debug.Log("Enter Jump State");
+            Jump();
         }
         internal override void UpdateState()
         {
@@ -21,14 +22,19 @@ namespace FrogLoom
         }
         internal override void CheckSwitchStates()
         {
-
+            if (Ctx.IsGrounded)
+            {
+                SwitchStates(Factory.Grounded());
+            }
         }
         internal override void InitializeSubState()
         {
 
         }
 
-        void Jump() { }
+        void Jump() {
+            Ctx.PlayerRigidBody.AddForce(Ctx.PlayerTransform.up * Ctx.JumpForce, ForceMode2D.Impulse);
+        }
     }
 
 }

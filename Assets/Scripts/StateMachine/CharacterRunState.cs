@@ -9,7 +9,7 @@ namespace FrogLoom
         internal CharacterRunState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base(currentContext, characterStateFactory) { }
         internal override void EnterState()
         {
-
+            Debug.Log("Enter Run State");
         }
         internal override void UpdateState()
         {

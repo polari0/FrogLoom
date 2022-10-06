@@ -10,7 +10,7 @@ namespace FrogLoom
 
         internal override void EnterState()
         {
-
+            Debug.Log("Enter Idle State");
         }
         internal override void UpdateState()
         {
