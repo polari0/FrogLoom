@@ -27,7 +27,7 @@ namespace FrogLoom
         internal abstract void InitializeSubState();
 
 
-        void UpdateStates()
+        internal void UpdateStates()
         {
             UpdateState();
             if (_currentSubState != null)
