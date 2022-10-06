@@ -48,7 +48,7 @@ namespace FrogLoom
             // Set grounded status
             _grounded = raycastHit.collider != null;
 
-            // Following lines for debugging purposes
+            // Following lines are for debugging purposes only
             Color rayColor;
             if (raycastHit.collider != null)
             {
@@ -59,7 +59,6 @@ namespace FrogLoom
             }
             // This helps to visualize where the box collider hits approximately
             // Not exactly correct!!
-            
             Debug.DrawRay(_capsuleCollider2D.bounds.center + new Vector3(_capsuleCollider2D.bounds.extents.x * 0.8f, 0), Vector2.down * (_capsuleCollider2D.bounds.extents.y + extraHeight), rayColor);
             Debug.DrawRay(_capsuleCollider2D.bounds.center - new Vector3(_capsuleCollider2D.bounds.extents.x * 0.8f, 0), Vector2.down * (_capsuleCollider2D.bounds.extents.y + extraHeight), rayColor);
             Debug.DrawRay(_capsuleCollider2D.bounds.center - new Vector3(_capsuleCollider2D.bounds.extents.x, _capsuleCollider2D.bounds.extents.y + extraHeight), Vector2.right * (_capsuleCollider2D.bounds.size), rayColor);
