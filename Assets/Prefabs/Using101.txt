@@ -1,0 +1,3 @@
+Each platfrom has end point which the platfrom will move to when certain condition is met. Usually player standing on it. 
+
+Move the endpoint where ever you want and the platform will move there once the condition is met. 

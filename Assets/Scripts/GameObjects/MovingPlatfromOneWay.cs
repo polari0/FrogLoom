@@ -6,22 +6,29 @@ using DG.Tweening;
 public class MovingPlatfromOneWay : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody2D platfrom;
+    private Transform platfrom;
     [SerializeField]
     private Transform endPoint;
 
-
-
-    private float posX, posY;
+    [SerializeField, Range(0, 100), Tooltip("How long it takes to Move")]
+    float Time;
 
 
     private void Awake()
     {
-        posX = endPoint.transform.position.x;
-        posY = endPoint.transform.position.y;
+        
     }
+
     private void Start()
     {
-        platfrom.DOMove(new Vector2(posX, posY), 5f, false);
+        //platfrom.DOMove(endPoint.transform.position, 5f, false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
+        {
+            platfrom.DOMove(endPoint.transform.position, Time, false).SetEase(Ease.Unset); 
+        }
     }
 }
