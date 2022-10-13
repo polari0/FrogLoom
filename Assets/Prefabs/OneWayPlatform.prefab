@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platfrom: {fileID: 7287707861541358023}
   endPoint: {fileID: 2782909295165569106}
+  Time: 6
 --- !u!50 &6452017879253978610
 Rigidbody2D:
   serializedVersion: 4

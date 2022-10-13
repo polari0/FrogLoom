@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7849726546548377521}
   - component: {fileID: 4344617555431469574}
   - component: {fileID: 5140622829423529446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   platfrom: {fileID: 8123451343737955616}
   endPoint: {fileID: 469322310236656777}
   startingPoint: {fileID: 7422799590407356155}
-  speed: 1
+  Time: 5
 --- !u!50 &6671562117981461208
 Rigidbody2D:
   serializedVersion: 4
