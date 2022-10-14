@@ -11,6 +11,7 @@ namespace FrogLoom
         internal override void EnterState()
         {
             Debug.Log("Enter Idle State");
+            //Animator.Play(Idle_Animation); or something like that
         }
         internal override void UpdateState()
         {

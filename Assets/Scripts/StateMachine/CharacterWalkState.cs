@@ -9,6 +9,7 @@ namespace FrogLoom
         internal CharacterWalkState(CharacterStateMachine currentContext, CharacterStateFactory characterStateFactory) : base (currentContext, characterStateFactory){ }
         internal override void EnterState()
         {
+            _ctx.MoveSpeed = 1;
             Debug.Log("Enter Walk State");
         }
         internal override void UpdateState()

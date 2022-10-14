@@ -20,8 +20,8 @@ namespace FrogLoom
         private Transform _transform;
         private bool _requireNewJumpPress = false;
 
-        [SerializeField] private float _jumpForce = 1f;
-        [SerializeField] private float _movespeed = 1f;
+        [SerializeField, Range(0, 10)] private float _jumpForce = 1f;
+        [SerializeField, Range(0, 10)] private float _movespeed = 1f;
         private bool _grounded = false;
         private CapsuleCollider2D _capsuleCollider2D;
         private Rigidbody2D _rigidBody;
@@ -39,6 +39,7 @@ namespace FrogLoom
         public Vector2 CurrentMovementInput { get { return _currentMovementInput; } } 
         public Transform PlayerTransform { get { return _transform; } set { _transform = value; } }
         public float JumpForce { get { return _jumpForce; } }
+        public float MoveSpeed { get { return _movespeed; } set { _movespeed = value;  } }
         public bool RequireNewJumpPress { get { return _requireNewJumpPress; } set { _requireNewJumpPress = value; } }
 
         private void CheckGrounded ()
