@@ -6,22 +6,24 @@ public class BreakingPlatform : MonoBehaviour
 {
     [SerializeField, Tooltip("This should be the platfromsprite")]
     GameObject breakingPlatform;
-
+    [SerializeField, Tooltip("This should be the BoxColliderOnparent")]
+    Collider breakingPlatformCollider;
     [SerializeField, Range(1, 10)]
     int breakingTime;
     [SerializeField, Range(1, 10)]
     int RegenTime;
 
     bool isActive = true;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.tag == "Player" && isActive)
+        if (other.tag == "Player" && isActive)
         {
             StartCoroutine(breakingTimer());
         }
     }
 
-    IEnumerator RegenerationTime()
+    private IEnumerator RegenerationTime()
     {
         Debug.Log("here We Go");
         if (!isActive)
@@ -29,6 +31,7 @@ public class BreakingPlatform : MonoBehaviour
             Debug.Log("De We go here?");
             yield return new WaitForSeconds(RegenTime);
             breakingPlatform.SetActive(true);
+            breakingPlatformCollider.enabled = true;
             isActive = true;
         }
     }
@@ -38,6 +41,7 @@ public class BreakingPlatform : MonoBehaviour
         {
             yield return new WaitForSeconds(breakingTime);
             breakingPlatform.SetActive(false);
+            breakingPlatformCollider.enabled = false;
             isActive = false;
             StartCoroutine(RegenerationTime());
 
