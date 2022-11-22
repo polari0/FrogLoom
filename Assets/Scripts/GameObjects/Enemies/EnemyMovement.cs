@@ -41,19 +41,32 @@ namespace FrogLoom
         {
             playerRef = GameObject.FindGameObjectWithTag("Player");
             StartCoroutine(FOVRoutine());
+            //StartCoroutine(AttackTimer());
         }
 
 
         private void Update()
         {
-            //if (canSeePlayer)
-            //{
-            //    DOTween.Pause("enemyMovement");
-
-            //}
+            if (canSeePlayer)
+            {
+                Debug.Log("CanSeePlayer");
+            }
         }
 
-
+        //IEnumerator AttackTimer()
+        //{
+        //    WaitForSeconds checkTimer = new WaitForSeconds(0.1f);
+        //    if (canSeePlayer)
+        //    {
+        //        Debug.Log("Yee");
+        //        DOTween.Pause("enemyMovement");
+        //        yield return checkTimer;
+        //    }
+        //    if (!canSeePlayer)
+        //    {
+        //        DOTween.Play("enemyMovement");
+        //    }
+        //}
 
         private IEnumerator FOVRoutine()
         {
