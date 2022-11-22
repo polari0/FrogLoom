@@ -50,23 +50,16 @@ namespace FrogLoom
             if (canSeePlayer)
             {
                 Debug.Log("CanSeePlayer");
+                StartCoroutine(AttackTimer());
             }
         }
 
-        //IEnumerator AttackTimer()
-        //{
-        //    WaitForSeconds checkTimer = new WaitForSeconds(0.1f);
-        //    if (canSeePlayer)
-        //    {
-        //        Debug.Log("Yee");
-        //        DOTween.Pause("enemyMovement");
-        //        yield return checkTimer;
-        //    }
-        //    if (!canSeePlayer)
-        //    {
-        //        DOTween.Play("enemyMovement");
-        //    }
-        //}
+        IEnumerator AttackTimer()
+        {
+            WaitForSeconds checkTimer = new WaitForSeconds(0.1f);
+            DOTween.Pause("enemyMovement");
+            yield return checkTimer;
+        }
 
         private IEnumerator FOVRoutine()
         {
