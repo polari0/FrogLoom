@@ -20,6 +20,9 @@ namespace FrogLoom
 
         private TweenParams Loop = new TweenParams().SetLoops(-1);
 
+        internal float endPointXPos;
+        internal float StartPointXPos;
+
         public float radius;
         [Range(0, 360)]
         public float angle;
@@ -30,35 +33,67 @@ namespace FrogLoom
         public LayerMask obstructionMask;
 
         public bool canSeePlayer;
+        private bool movingRight;
 
         private void Awake()
         {
-            Sequence EnemyMovement = DOTween.Sequence();
-            EnemyMovement.Append(enemy.DOMove(endPoint.transform.position, moventSpeed, false)).Append(enemy.DOLocalRotate(new Vector3(180, 0, 0), 1, RotateMode.Fast))
-            .Append(enemy.DOMove(startingPoint.transform.position, moventSpeed, false)).Append(enemy.DOLocalRotate(new Vector3(0, 0, 0), 1, RotateMode.Fast)).SetAs(Loop).SetId("enemyMovement");
+        //    Sequence EnemyMovement = DOTween.Sequence();
+        //    EnemyMovement.Append(enemy.DOMove(endPoint.transform.position, moventSpeed, false)).Append(enemy.DOLocalRotate(new Vector3(180, 0, 0), 1, RotateMode.Fast))
+        //    .Append(enemy.DOMove(startingPoint.transform.position, moventSpeed, false)).Append(enemy.DOLocalRotate(new Vector3(0, 0, 0), 1, RotateMode.Fast)).SetAs(Loop).SetId("enemyMovement");
         }
         private void Start()
         {
+            //GetMovingPositions();
             playerRef = GameObject.FindGameObjectWithTag("Player");
             StartCoroutine(FOVRoutine());
             //StartCoroutine(AttackTimer());
+
         }
 
 
         private void Update()
         {
+            //if (movingRight)
+            //{
+            //    enemy.transform.position = enemy.transform.position + new Vector3(endPointXPos, 0f, 0f) * moventSpeed * Time.deltaTime;
+            //}
+            //else if (!movingRight)
+            //{
+            //    enemy.transform.position = enemy.transform.position + new Vector3(StartPointXPos, 0f, 0f) * moventSpeed * Time.deltaTime;
+            //}
             if (canSeePlayer)
             {
                 Debug.Log("CanSeePlayer");
-                StartCoroutine(AttackTimer());
+                moventSpeed = 2;
+                //StartCoroutine(AttackTimer());
+                GetMovingPositions();
             }
         }
 
-        IEnumerator AttackTimer()
+        private void OnTriggerEnter(Collider other)
         {
-            WaitForSeconds checkTimer = new WaitForSeconds(0.1f);
-            DOTween.Pause("enemyMovement");
-            yield return checkTimer;
+            //if(other.tag == "endPoint" && movingRight)
+            //{
+            //    enemy.transform.rotation = new Quaternion(180, 0f, 0f, moventSpeed);
+            //    movingRight = false;
+            //}
+            //else if (other.tag == "StartingPoint" && !movingRight)
+            //{
+            //    enemy.transform.rotation = new Quaternion(-180, 0f, 0f, moventSpeed);
+            //    movingRight = true;
+            //}
+        }
+
+        //IEnumerator AttackTimer()
+        //{
+        //    WaitForSeconds checkTimer = new WaitForSeconds(0.1f);
+        //    DOTween.Pause("enemyMovement");
+        //    yield return checkTimer;
+        //}
+        private void GetMovingPositions()
+        {
+            endPointXPos = playerRef.transform.position.x;
+            enemy.transform.position = enemy.transform.position + new Vector3(endPointXPos, 0f, 0f) * moventSpeed * Time.deltaTime;
         }
 
         private IEnumerator FOVRoutine()
